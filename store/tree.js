@@ -40,7 +40,7 @@ export const actions = {
     // eslint-disable-next-line no-unused-vars
     // условная модель дерева
     const tree = {
-      title: 'Программирование',
+      title: 'Дерево',
       items: [
         'Изучаем основы',
         {

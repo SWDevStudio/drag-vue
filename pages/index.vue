@@ -1,39 +1,43 @@
 <template>
   <div class="tree">
-    <v-tree-list class="tree__tree-list" />
+    <v-tree v-for="(item, key) in tree" :key="key" :list="item" />
   </div>
 </template>
 
 <script>
 
-import VTreeList from '~/components/vTreeList'
+import VTree from '~/components/vTree'
+
 export default {
-  components: { VTreeList },
-  async fetch ({ store }) {
-    await store.dispatch('tree/fetchTree')
-  },
+  components: { VTree },
   data () {
     return {
-      myArray: [
-        { id: 1, name: 'Kotaro' },
-        { id: 2, name: 'Gif' },
-        { id: 3, name: 'Memes' },
-        { id: 4, name: 'Olga' }
+      tree: [
+        {
+          title: 'Деверо',
+          items: [
+            {
+              title: 'Программирование',
+              items: [
+                'Тема1',
+                'Тема2'
+              ]
+            },
+            {
+              title: 'Дизайн',
+              items: [
+                'Тема1',
+                'Тема2'
+              ]
+            }
+          ]
+        }
       ]
-    }
-  },
-  computed: {
-    tree () {
-      return this.$store.getters['tree/getTree']
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .tree {
-    width: 1024px;
-    margin: 0 auto;
 
-  }
 </style>
