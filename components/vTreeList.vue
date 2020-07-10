@@ -4,11 +4,14 @@
       {{ list.title }}
     </h2>
     <ul class="tree-list__list list">
-      <li v-for="(index, key) in list.items" :key="key" class="list__item">
-        <v-tree-list v-if="isList(index)" :list="index" />
-        <span v-else>{{ index }}</span>
-      </li>
+      <draggable v-model="list.items" group="people" @start="drag=true" @end="drag=false">
+        <li v-for="(index, key) in list.items" :key="key" class="list__item">
+          <v-tree-list v-if="isList(index)" :list="index" />
+          <span v-else>{{ index }}</span>
+        </li>
+      </draggable>
     </ul>
+    <ul class="tree-list__list list" />
   </div>
 </template>
 

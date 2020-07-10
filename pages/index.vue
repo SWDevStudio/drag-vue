@@ -1,16 +1,26 @@
 <template>
   <div class="tree">
-    <v-tree-list :list="tree" class="tree__tree-list" />
+    <v-tree-list class="tree__tree-list" />
   </div>
 </template>
 
 <script>
 
-import vTreeList from '~/components/vTreeList'
+import VTreeList from '~/components/vTreeList'
 export default {
-  components: { vTreeList },
+  components: { VTreeList },
   async fetch ({ store }) {
     await store.dispatch('tree/fetchTree')
+  },
+  data () {
+    return {
+      myArray: [
+        { id: 1, name: 'Kotaro' },
+        { id: 2, name: 'Gif' },
+        { id: 3, name: 'Memes' },
+        { id: 4, name: 'Olga' }
+      ]
+    }
   },
   computed: {
     tree () {
