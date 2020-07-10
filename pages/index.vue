@@ -1,6 +1,8 @@
 <template>
   <div class="tree">
-    <v-tree v-for="(item, key) in tree" :key="key" :list="item" />
+    <draggable v-model="tree" group="people" @start="drag=true" @end="drag=false">
+      <v-tree v-for="(item, key) in tree" :key="key" :list="item" />
+    </draggable>
   </div>
 </template>
 
@@ -19,15 +21,16 @@ export default {
             {
               title: 'Программирование',
               items: [
-                'Тема1',
-                'Тема2'
+                'Начинаем изучать программирование',
+                'Типы данных',
+                'Гуки они везде даже на фреймворках'
               ]
             },
             {
               title: 'Дизайн',
               items: [
-                'Тема1',
-                'Тема2'
+                'Дизайн это дизайн',
+                'Пазязя дайте четкое ТЗ'
               ]
             }
           ]
@@ -39,5 +42,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+.tree {
+  width: 1024px;
+  margin: 0 auto;
+}
 </style>
